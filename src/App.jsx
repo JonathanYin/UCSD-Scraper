@@ -1,33 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Post from './Post'
+// import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const mockPosts = [
+    {
+      title: 'Mock Post 1',
+      selftext: 'This is the content of mock post 1.',
+      permalink: '/r/test/comments/1/mock_post_1',
+    },
+    {
+      title: 'Mock Post 2',
+      selftext: 'This is the content of mock post 2.',
+      permalink: '/r/test/comments/2/mock_post_2',
+    },
+    // Add more mock posts as needed
+  ];
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="App">
+      {mockPosts.map((post, index) => (
+        <Post key={index} post={post} />
+      ))}
+    </div>
     </>
   )
 }
