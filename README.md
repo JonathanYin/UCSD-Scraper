@@ -7,3 +7,4 @@ This project is a simple, visually appealing React application that displays rel
 - Fetches data from Reddit's API, filtering for posts containing 'CS' or 'CSE'.
 - Displays each post in an easy-to-read format.
 - Built with React and Vite for fast development and performance.
+- Design and styling with Emotion, Framer Motion, and Fontawesome
