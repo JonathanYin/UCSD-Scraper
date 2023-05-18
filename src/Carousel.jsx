@@ -1,47 +1,175 @@
 /** @jsxImportSource @emotion/react */
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+import building from './assets/building.webp';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { motion, AnimatePresence } from "framer-motion";
 
-const CarouselItem = styled.div`
-  /* ... Put the styles from .carousel-item here ... */
-  
+const DisplayItem = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 `;
 
-const CarouselInfo = styled.div`
-  /* ... Put the styles from .carousel-item__info here ... */
+const CardInfo = styled(motion.div)`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 `;
 
-const CarouselContainer = styled.div`
-  /* ... Put the styles from .carousel-item__container here ... */
+const cardAnimation = {
+  hidden: { opacity: 0 },
+  show: { 
+    opacity: 1,
+    transition: { duration: 0.5 }
+  },
+  exit: { 
+    opacity: 0,
+    transition: { duration: 0.5 }
+  }
+}
+
+const TextContainer = styled.div`
+  flex: 1;
 `;
 
-const CarouselSubtitle = styled.h2`
+const ImageContainer = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CardImage = styled.img`
+  max-width: 100%;
+  border-radius: 8px;
+`;
+
+const Subtitle = styled.h2`
   /* ... Put the styles from .carousel-item__subtitle here ... */
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 3px;
+  font-size: 10px;
+  text-transform: uppercase;
+  margin: 0;
+  color: #7E7E7E;    
+  font-weight: 700;
+  transform: translateY(25%);
 `;
 
-const CarouselTitle = styled.h1`
+const Title = styled.h1`
   /* ... Put the styles from .carousel-item__title here ... */
+  margin: 15px 0 0 0;
+  padding-top: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  line-height: 45px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: #2C2C2C;
 `;
 
-const CarouselDescription = styled.p`
+const Description = styled.p`
   /* ... Put the styles from .carousel-item__description here ... */
+  margin-top: 35px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  color: #7e7e7e;
+  line-height: 22px;
+  margin-bottom: 35px;
 `;
 
-const CarouselBtn = styled.a`
+const LinkBtn = styled.a`
   /* ... Put the styles from .carousel-item__btn here ... */
+  width: 35%;
+  color: #2C2C2C;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 3px;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin: 0;
+  width: 35%;
+  font-weight: 700;
+  text-decoration: none;
+
+`;
+const ArrowBtnContainer = styled.div`
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 80px;
+  height: 30px;
 `;
 
-const Carousel = ({ post }) => (
-  <CarouselItem>
-    <CarouselInfo>
-      <CarouselContainer>
-        <CarouselSubtitle>Subtitle</CarouselSubtitle>
-        <CarouselTitle>{post.title}</CarouselTitle>
-        <CarouselDescription>{post.selftext}</CarouselDescription>
-        <CarouselBtn href={`https://reddit.com${post.permalink}`} target="_blank" rel="noreferrer">See comments</CarouselBtn>
-      </CarouselContainer>
-    </CarouselInfo>
-  </CarouselItem>
+const ArrowBtn = styled.button`
+  flex: 1;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 0.5px;
+    background-color: #333;
+  }
+
+  &:last-child::after {
+    content: none;
+  }
+`;
+
+const Carousel = ({ post, goPrev, goNext }) => (
+  <DisplayItem>
+    <AnimatePresence mode="wait">
+      <CardInfo
+        key={post.permalink} 
+        variants={cardAnimation} 
+        initial="hidden" 
+        animate="show" 
+        exit="exit">
+        <TextContainer>
+        <Subtitle>Subtitle</Subtitle>
+          <Title>{post.title}</Title>
+          <Description>{post.selftext}</Description>
+          <LinkBtn href={`https://reddit.com${post.permalink}`} target="_blank" rel="noreferrer">See comments</LinkBtn>
+        </TextContainer>
+        <ImageContainer>
+          <CardImage src={building} alt="White building" draggable="false"/>
+        </ImageContainer>
+        <ArrowBtnContainer>
+          <ArrowBtn onClick={goPrev}>
+            <FontAwesomeIcon icon={faArrowLeft} size="xs"/>
+          </ArrowBtn>
+          <ArrowBtn onClick={goNext}>
+            <FontAwesomeIcon icon={faArrowRight} size="xs"/>
+          </ArrowBtn>
+        </ArrowBtnContainer>
+      </CardInfo>
+    </AnimatePresence>
+  </DisplayItem>
 );
 
 Carousel.propTypes = {
@@ -50,6 +178,8 @@ Carousel.propTypes = {
     selftext: PropTypes.string,
     permalink: PropTypes.string,
   }).isRequired,
+  goPrev: PropTypes.func.isRequired,
+  goNext: PropTypes.func.isRequired,
 };
 
 export default Carousel;
