@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import building from './assets/building.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,7 +16,7 @@ const CardInfo = styled(motion.div)`
   position: relative;
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 75%;
   border-radius: 8px;
   padding: 16px;
   background-color: #fff;
@@ -25,15 +24,17 @@ const CardInfo = styled(motion.div)`
 `;
 
 const cardAnimation = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, x: 100 },
   show: { 
-    opacity: 1,
-    transition: { duration: 0.5 }
+    opacity: 1, 
+    x: 0, 
+    transition: { 
+      duration: 0.5,
+      when: "beforeChildren",
+      staggerChildren: 0.3
+    } 
   },
-  exit: { 
-    opacity: 0,
-    transition: { duration: 0.5 }
-  }
+  exit: { opacity: 0, x: -100, transition: { duration: 0.5 } }
 }
 
 const TextContainer = styled.div`
@@ -45,15 +46,18 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 20vw;
+  height: 55vh;
 `;
 
 const CardImage = styled.img`
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 8px;
 `;
 
 const Subtitle = styled.h2`
-  /* ... Put the styles from .carousel-item__subtitle here ... */
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 3px;
   font-size: 10px;
@@ -65,7 +69,6 @@ const Subtitle = styled.h2`
 `;
 
 const Title = styled.h1`
-  /* ... Put the styles from .carousel-item__title here ... */
   margin: 15px 0 0 0;
   padding-top: 10px;
   font-family: 'Playfair Display', serif;
@@ -77,7 +80,6 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-  /* ... Put the styles from .carousel-item__description here ... */
   margin-top: 35px;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
@@ -87,7 +89,6 @@ const Description = styled.p`
 `;
 
 const LinkBtn = styled.a`
-  /* ... Put the styles from .carousel-item__btn here ... */
   width: 35%;
   color: #2C2C2C;
   font-family: 'Open Sans', sans-serif;
@@ -157,7 +158,7 @@ const Carousel = ({ post, goPrev, goNext }) => (
           <LinkBtn href={`https://reddit.com${post.permalink}`} target="_blank" rel="noreferrer">See comments</LinkBtn>
         </TextContainer>
         <ImageContainer>
-          <CardImage src={building} alt="White building" draggable="false"/>
+          <CardImage src={post.image} alt="Post image" draggable="false"/>
         </ImageContainer>
         <ArrowBtnContainer>
           <ArrowBtn onClick={goPrev}>
@@ -177,6 +178,7 @@ Carousel.propTypes = {
     title: PropTypes.string,
     selftext: PropTypes.string,
     permalink: PropTypes.string,
+    image: PropTypes.string,
   }).isRequired,
   goPrev: PropTypes.func.isRequired,
   goNext: PropTypes.func.isRequired,

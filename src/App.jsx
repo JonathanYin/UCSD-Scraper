@@ -1,5 +1,8 @@
 import Post from './Post'
 // import './App.css'
+import building from './assets/building.webp'
+import architecture from './assets/architecture.webp'
+import ocean from './assets/ocean.webp'
 
 function App() {
 
@@ -8,25 +11,28 @@ function App() {
       title: 'Mock Post 1',
       selftext: 'This is the content of mock post 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       permalink: '/r/test/comments/1/mock_post_1',
+      image: building,
     },
     {
       title: 'Mock Post 2',
       selftext: 'Random other text.',
       permalink: '/r/test/comments/2/mock_post_2',
+      image: architecture,
     },
     {
       title: 'Mock Post 3',
       selftext: 'More random text.',
       permalink: '/r/test/comments/3/mock_post_3',
+      image: ocean,
     },
     // Add more mock posts as needed
   ];
 
   return (
     <>
-    <div className="App">
-      <Post posts={mockPosts} />
-    </div>
+      <div className="App">
+        <Post posts={mockPosts} />
+      </div>
     </>
   )
 }
