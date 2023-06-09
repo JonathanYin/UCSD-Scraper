@@ -4,11 +4,11 @@ import building from './assets/building.webp'
 import architecture from './assets/architecture.webp'
 import ocean from './assets/ocean.webp'
 import { useState } from 'react'
-import { css, Global } from '@emotion/react'
 import styled from '@emotion/styled'
+import { Global, css } from '@emotion/react'
 
 const AppContainer = styled('div')`
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background-color 1s ease-in-out, color 1s ease-in-out, border 1s ease-in-out;
   height: 100vh;
   width: 100vw;
 `;
@@ -23,17 +23,17 @@ const useTheme = (defaultTheme = 'light') => {
   return [theme, toggleTheme];
 };
 
+const globalStyles = (theme) => css`
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: ${theme === 'light' ? 'white' : '#00071d'};
+    transition: background-color 1s ease-in-out;
+  }`;
+
 function App() {
   const [theme, toggleTheme] = useTheme();
-
-  const globalStyles = css`
-    body {
-      background-color: ${theme === 'light' ? 'white' : 'black'};
-      color: ${theme === 'light' ? 'black' : 'white'};
-      transition: background-color 1s ease-in-out, color 1s ease-in-out;
-    }
-  `;
-
   const mockPosts = [
     {
       title: 'Mock Post 1',
@@ -58,7 +58,7 @@ function App() {
 
   return (
     <>
-      <Global styles={globalStyles} />
+    <Global styles={globalStyles(theme)} />
       <AppContainer>
           <Sidebar theme={theme} toggleTheme={toggleTheme} />
           <Post posts={mockPosts} theme={theme} />

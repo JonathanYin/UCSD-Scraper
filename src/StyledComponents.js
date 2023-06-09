@@ -17,9 +17,11 @@ export const CardInfo = styled(motion.div)`
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background-color: ${({ theme }) => theme === 'light' ? '#fff' : '#000'};
-  border: ${({ theme }) => theme === 'light' ? 'none' : '1px solid #fff'};
+  background-color: ${({ theme }) => theme === 'light' ? '#fff' : '#212A3E'};
+  border: ${({ theme }) => theme === 'light' ? 'none' : '1px solid #F1F6F9'};
+  transition: background-color 1s ease-in-out, color 1s ease-in-out, border 1s ease-in-out;
 `;
+
 
 export const cardAnimation = {
   hidden: { opacity: 0, x: 100 },
@@ -61,9 +63,10 @@ export const Subtitle = styled.h2`
   font-size: 10px;
   text-transform: uppercase;
   margin: 0;
-  color: ${({ theme }) => theme === 'light' ? '#7E7E7E' : '#fff'};   
+  color: ${({ theme }) => theme === 'light' ? '#7E7E7E' : '#BDCDD6'};   
   font-weight: 700;
   transform: translateY(25%);
+  transition: background-color 1s ease-in-out, color 1s ease-in-out, border 1s ease-in-out;
 `;
 
 export const Title = styled.h1`
@@ -74,7 +77,8 @@ export const Title = styled.h1`
   line-height: 45px;
   letter-spacing: 3px;
   font-weight: 700;
-  color: ${({ theme }) => theme === 'light' ? '#2C2C2C' : '#FFFFFF'};
+  color: ${({ theme }) => theme === 'light' ? '#2C2C2C' : '#ECF2FF'};
+  transition: background-color 1s ease-in-out, color 1s ease-in-out, border 1s ease-in-out;
 `;
 
 export const Description = styled.p`
@@ -88,7 +92,7 @@ export const Description = styled.p`
 
 export const LinkBtn = styled.a`
   width: 35%;
-  color: ${({ theme }) => theme === 'light' ? '#2C2C2C' : '#fff'};
+  color: ${({ theme }) => theme === 'light' ? '#2C2C2C' : '#BDCDD6'};
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 3px;
   font-size: 11px;
@@ -112,6 +116,7 @@ export const ArrowBtnContainer = styled.div`
   overflow: hidden;
   width: 80px;
   height: 30px;
+  transition: background-color 1s ease-in-out, color 1s ease-in-out, border 1s ease-in-out;
 `;
 
 export const ArrowBtn = styled.button`
@@ -124,15 +129,16 @@ export const ArrowBtn = styled.button`
   align-items: center;
   justify-content: center;
   position: relative;
-  color: ${({ theme }) => theme === 'light' ? '#000' : '#FFF'}; 
 
   &:last-child::after {
     content: none;
   }
+  transition: background-color 1s ease-in-out, color 1s ease-in-out, border 1s ease-in-out;
 `;
 
 export const Divider = styled.div`
   height: 60%;
   width: 1.25px;
   background-color: ${({ theme }) => theme === 'light' ? '#000' : '#FFF'};
+  transition: background-color 1s ease-in-out, color 1s ease-in-out, border 1s ease-in-out;
 `;

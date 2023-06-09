@@ -23,8 +23,8 @@ const Sidebar = ({ theme, toggleTheme }) => {
     `;
   
     const darkThemeStyles = css`
-      background-color: black;
-      color: white;
+      background-color: #00071d;
+      color: #ECF2FF;
     `;
   
     return (

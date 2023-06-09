@@ -30,11 +30,11 @@ import { DisplayItem, CardInfo, cardAnimation, TextContainer, ImageContainer, Ca
           </ImageContainer>
           <ArrowBtnContainer theme={theme}>
             <ArrowBtn onClick={goPrev}>
-              <FontAwesomeIcon icon={faArrowLeft} size="xs" color={theme === 'light' ? '#000' : '#FFF'}/> {/*Update here*/}
+              <FontAwesomeIcon icon={faArrowLeft} size="xs" color={theme === 'light' ? '#000' : '#655DBB'}/> {/*Update here*/}
             </ArrowBtn>
             <Divider theme={theme} />
             <ArrowBtn onClick={goNext}>
-              <FontAwesomeIcon icon={faArrowRight} size="xs" color={theme === 'light' ? '#000' : '#FFF'}/> {/*And here*/}
+              <FontAwesomeIcon icon={faArrowRight} size="xs" color={theme === 'light' ? '#000' : '#655DBB'}/> {/*And here*/}
             </ArrowBtn>
           </ArrowBtnContainer>
         </CardInfo>
