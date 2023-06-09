@@ -28,7 +28,7 @@ const globalStyles = (theme) => css`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: ${theme === 'light' ? 'white' : '#00071d'};
+    background-color: ${theme === 'light' ? '#f5f4fd' : '#00071d'};
     transition: background-color 1s ease-in-out;
   }`;
 

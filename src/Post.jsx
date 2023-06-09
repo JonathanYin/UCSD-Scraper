@@ -5,7 +5,7 @@ import Carousel from './Carousel';
 import styled from '@emotion/styled';
 
 const PostContainer = styled('div')`
-  background-color: ${({ theme }) => theme === 'light' ? 'white' : '#00071d'};
+  background-color: ${({ theme }) => theme === 'light' ? '#f5f4fd' : '#00071d'};
   transition: background-color 1s ease-in-out, color 1s ease-in-out;
 `;
 

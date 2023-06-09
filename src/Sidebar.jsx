@@ -18,8 +18,8 @@ const SidebarContainer = styled('div')`
 const Sidebar = ({ theme, toggleTheme }) => {
 
     const lightThemeStyles = css`
-      background-color: white;
-      color: black;
+      background-color: #f5f4fd;
+      color: #00071d;
     `;
   
     const darkThemeStyles = css`
