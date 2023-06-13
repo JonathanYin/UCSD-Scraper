@@ -2,7 +2,8 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import DarkModeToggle from 'react-dark-mode-toggle'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 const SidebarContainer = styled('div')`
   width: 200px;
@@ -14,6 +15,25 @@ const SidebarContainer = styled('div')`
   box-sizing: border-box;
   transition: background-color 1s ease-in-out, color 1s ease-in-out;
 `;
+
+const ToggleButton = styled.button`
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: ${({ theme }) => theme === 'light' ? '#000' : '#fff'};
+`;
+
+
+const DarkModeToggle = ({ theme, toggleTheme }) => (
+  <ToggleButton onClick={toggleTheme} theme={theme}>
+    {theme === 'light' ? <FontAwesomeIcon icon={faMoon} size="2x" /> : <FontAwesomeIcon icon={faSun} size="2x" />}
+  </ToggleButton>
+);
+
+DarkModeToggle.propTypes = {
+  theme: PropTypes.string.isRequired,
+  toggleTheme: PropTypes.func.isRequired,
+};
 
 const Sidebar = ({ theme, toggleTheme }) => {
 
@@ -30,10 +50,14 @@ const Sidebar = ({ theme, toggleTheme }) => {
     return (
       <SidebarContainer css={theme === 'light' ? lightThemeStyles : darkThemeStyles}>
         <h1>Sidebar</h1>
-        <DarkModeToggle
+        {/* <DarkModeToggle
           onChange={toggleTheme}
           checked={theme === 'dark'}
           size={80}
+        /> */}
+        <DarkModeToggle
+          toggleTheme={toggleTheme}
+          theme={theme}
         />
       </SidebarContainer>
     );
