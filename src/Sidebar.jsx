@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
-const SidebarContainer = styled('div')`
+const SidebarContainer = styled("div")`
   width: 200px;
   height: 100%;
   position: fixed;
@@ -20,13 +20,16 @@ const ToggleButton = styled.button`
   cursor: pointer;
   background: none;
   border: none;
-  color: ${({ theme }) => theme === 'light' ? '#000' : '#fff'};
+  color: ${({ theme }) => (theme === "light" ? "#000" : "#fff")};
 `;
-
 
 const DarkModeToggle = ({ theme, toggleTheme }) => (
   <ToggleButton onClick={toggleTheme} theme={theme}>
-    {theme === 'light' ? <FontAwesomeIcon icon={faMoon} size="2x" /> : <FontAwesomeIcon icon={faSun} size="2x" />}
+    {theme === "light" ? (
+      <FontAwesomeIcon icon={faMoon} size="2x" />
+    ) : (
+      <FontAwesomeIcon icon={faSun} size="2x" />
+    )}
   </ToggleButton>
 );
 
@@ -36,36 +39,29 @@ DarkModeToggle.propTypes = {
 };
 
 const Sidebar = ({ theme, toggleTheme }) => {
+  const lightThemeStyles = css`
+    background-color: #f5f4fd;
+    color: #00071d;
+  `;
 
-    const lightThemeStyles = css`
-      background-color: #f5f4fd;
-      color: #00071d;
-    `;
-  
-    const darkThemeStyles = css`
-      background-color: #00071d;
-      color: #ECF2FF;
-    `;
-  
-    return (
-      <SidebarContainer css={theme === 'light' ? lightThemeStyles : darkThemeStyles}>
-        <h1>Sidebar</h1>
-        {/* <DarkModeToggle
-          onChange={toggleTheme}
-          checked={theme === 'dark'}
-          size={80}
-        /> */}
-        <DarkModeToggle
-          toggleTheme={toggleTheme}
-          theme={theme}
-        />
-      </SidebarContainer>
-    );
-  };
-  
+  const darkThemeStyles = css`
+    background-color: #00071d;
+    color: #ecf2ff;
+  `;
+
+  return (
+    <SidebarContainer
+      css={theme === "light" ? lightThemeStyles : darkThemeStyles}
+    >
+      <h1>Sidebar</h1>
+      <DarkModeToggle toggleTheme={toggleTheme} theme={theme} />
+    </SidebarContainer>
+  );
+};
+
 Sidebar.propTypes = {
-    theme: PropTypes.string.isRequired,
-    toggleTheme: PropTypes.func.isRequired,
-  };
+  theme: PropTypes.string.isRequired,
+  toggleTheme: PropTypes.func.isRequired,
+};
 
 export default Sidebar;
