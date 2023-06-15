@@ -22,3 +22,11 @@ build/
 
 # Ignore Jupyter Notebook files:
 .ipynb_checkpoints
+
+# Ignore environment files:
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
