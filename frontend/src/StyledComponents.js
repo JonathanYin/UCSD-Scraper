@@ -112,7 +112,7 @@ export const ArrowBtnContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({ theme }) => (theme === "light" ? "white" : "#000")};
+  background-color: ${({ theme }) => (theme === "light" ? "white" : "#00071d")};
   border: ${({ theme }) => (theme === "light" ? "none" : "1px solid #fff")};
   border-radius: 8px;
   overflow: hidden;

@@ -55,7 +55,6 @@ const Carousel = ({ post, goPrev, goNext, theme }) => (
               size="xs"
               color={theme === "light" ? "#000" : "#655DBB"}
             />{" "}
-            {/*Update here*/}
           </ArrowBtn>
           <Divider theme={theme} />
           <ArrowBtn onClick={goNext}>
@@ -64,7 +63,6 @@ const Carousel = ({ post, goPrev, goNext, theme }) => (
               size="xs"
               color={theme === "light" ? "#000" : "#655DBB"}
             />{" "}
-            {/*And here*/}
           </ArrowBtn>
         </ArrowBtnContainer>
       </CardInfo>
