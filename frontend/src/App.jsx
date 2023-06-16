@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 import building from "./assets/building.webp";
 import architecture from "./assets/architecture.webp";
 import ocean from "./assets/ocean.webp";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { Global, css } from "@emotion/react";
 
@@ -36,6 +36,7 @@ const globalStyles = (theme) => css`
 
 function App() {
   const [theme, toggleTheme] = useTheme();
+
   const mockPosts = [
     {
       title: "Mock Post 1",
@@ -59,12 +60,44 @@ function App() {
     // Add more mock posts as needed
   ];
 
+  const [posts, setPosts] = useState(mockPosts);
+
+  useEffect(() => {
+    // Fetch posts from the backend when component mounts
+    fetch("http://127.0.0.1:5000/api/posts/cs")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Transform the data into the format expected by the Post component
+        const formattedData = data.map((title, index) => ({
+          title,
+          selftext: "Post content goes here",
+          permalink: `/r/ucsd/comments/${index}/post`,
+          image: building, // You might want to change this
+        }));
+
+        setPosts(formattedData);
+      })
+      .catch((error) => {
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+        // Use mock posts as a fallback
+        setPosts(mockPosts);
+      });
+  }, []);
+
   return (
     <>
       <Global styles={globalStyles(theme)} />
       <AppContainer>
         <Sidebar theme={theme} toggleTheme={toggleTheme} />
-        <Post posts={mockPosts} theme={theme} />
+        <Post posts={posts} theme={theme} />
       </AppContainer>
     </>
   );
