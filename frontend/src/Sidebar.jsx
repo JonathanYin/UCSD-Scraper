@@ -53,7 +53,7 @@ const Sidebar = ({ theme, toggleTheme }) => {
     <SidebarContainer
       css={theme === 'light' ? lightThemeStyles : darkThemeStyles}
     >
-      <h1>Sidebar</h1>
+      <h1>Settings</h1>
       <DarkModeToggle toggleTheme={toggleTheme} theme={theme} />
     </SidebarContainer>
   );

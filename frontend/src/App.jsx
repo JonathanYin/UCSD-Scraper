@@ -64,7 +64,6 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-
     fetch('http://127.0.0.1:5000/api/posts/cs')
       .then((response) => {
         if (!response.ok) {
@@ -78,6 +77,7 @@ function App() {
           selftext: post.selftext,
           permalink: post.permalink,
           image: building,
+          flair: post.flair,
         }));
         setPosts(formattedData);
         setLoading(false);

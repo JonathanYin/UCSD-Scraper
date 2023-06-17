@@ -39,7 +39,8 @@ def get_cs_posts():
         posts.append({
             "title": post.title,
             "selftext": post.selftext,
-            "permalink": f"https://www.reddit.com{post.permalink}"
+            "permalink": f"https://www.reddit.com{post.permalink}",
+            "flair": post.link_flair_text,
         })
     return jsonify(posts)
 

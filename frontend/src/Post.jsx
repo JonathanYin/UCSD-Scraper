@@ -16,18 +16,31 @@ const spinner = {
   },
 };
 
+const SpinnerContainer = styled('div')`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;
+
 const Spinner = () => (
-  <motion.div
-    style={{
-      width: 50,
-      height: 50,
-      border: '5px solid #eee',
-      borderTop: '5px solid #655DBB',
-      borderRadius: '50%',
-    }}
-    variants={spinner}
-    animate="animate"
-  />
+  <SpinnerContainer>
+    <motion.div
+      style={{
+        width: 50,
+        height: 50,
+        border: '5px solid #eee',
+        borderTop: '5px solid #655DBB',
+        borderRadius: '50%',
+      }}
+      variants={spinner}
+      animate="animate"
+    />
+  </SpinnerContainer>
 );
 
 const PostContainer = styled('div')`
@@ -37,11 +50,10 @@ const PostContainer = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  overflow: auto;
 `;
 
 const Post = ({ posts, theme, loading }) => {
-  console.log('loading', loading);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goPrev = () =>

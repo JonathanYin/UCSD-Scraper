@@ -33,7 +33,7 @@ const Carousel = ({ post, goPrev, goNext, theme }) => (
         theme={theme}
       >
         <TextContainer theme={theme}>
-          <Subtitle theme={theme}>Subtitle</Subtitle>
+          <Subtitle theme={theme}>{post.flair || 'No Flair'}</Subtitle>
           <Title theme={theme}>{post.title}</Title>
           <Description theme={theme}>{post.selftext}</Description>
           <LinkBtn
@@ -76,6 +76,7 @@ Carousel.propTypes = {
     selftext: PropTypes.string,
     permalink: PropTypes.string,
     image: PropTypes.string,
+    flair: PropTypes.string,
   }).isRequired,
   goPrev: PropTypes.func.isRequired,
   goNext: PropTypes.func.isRequired,
