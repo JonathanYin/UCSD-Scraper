@@ -2,6 +2,108 @@
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
+export const SettingsTitle = styled('h1')`
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  color: ${({ theme }) => (theme === 'light' ? '#000' : '#ECF2FF')};
+  transition: color 1s ease-in-out;
+`;
+
+export const SliderLabel = styled('div')`
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: ${({ theme }) => (theme === 'light' ? '#000' : '#ECF2FF')};
+  margin-bottom: 10px;
+  transition: color 1s ease-in-out;
+`;
+
+export const SliderContainer = styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+`;
+
+export const Slider = styled(motion.input)`
+  cursor: pointer;
+  appearance: none;
+  width: 100%;
+  height: 15px;
+  background: ${({ theme }) => (theme === 'light' ? '#ddd' : '#444')};
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  border-radius: 50px;
+
+  ::-webkit-slider-thumb {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: ${({ theme }) => (theme === 'light' ? '#4CAF50' : '#66ff00')};
+    cursor: pointer;
+    transition: background 0.3s;
+    box-shadow: ${({ theme }) =>
+      theme === 'dark'
+        ? '0 0 10px #66ff00, 0 0 20px #66ff00, 0 0 30px #66ff00, 0 0 40px #66ff00'
+        : 'none'}; /* Glow in the dark */
+  }
+
+  :hover {
+    opacity: 1;
+  }
+
+  :hover::-webkit-slider-thumb {
+    background: ${({ theme }) => (theme === 'light' ? '#388E3C' : '#4dd200')};
+  }
+
+  ::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: ${({ theme }) => (theme === 'light' ? '#4CAF50' : '#66ff00')};
+    cursor: pointer;
+    transition: background 0.3s;
+    box-shadow: ${({ theme }) =>
+      theme === 'dark'
+        ? '0 0 10px #66ff00, 0 0 20px #66ff00, 0 0 30px #66ff00, 0 0 40px #66ff00'
+        : 'none'};
+  }
+
+  ::-moz-range-progress {
+    background-color: ${({ theme }) =>
+      theme === 'light' ? '#4CAF50' : '#66ff00'};
+  }
+
+  :hover::-moz-range-thumb {
+    background: ${({ theme }) => (theme === 'light' ? '#388E3C' : '#4dd200')};
+  }
+`;
+
+export const SidebarContainer = styled('div')`
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: ${({ theme }) =>
+    theme === 'light' ? '#f5f4fd' : '#00071d'};
+  color: ${({ theme }) => (theme === 'light' ? '#00071d' : '#ecf2ff')};
+  transition: background-color 1s ease-in-out, color 1s ease-in-out;
+`;
+
+export const ToggleButton = styled.button`
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: ${({ theme }) => (theme === 'light' ? '#000' : '#fff')};
+`;
+
 export const DisplayItem = styled.div`
   display: flex;
   justify-content: center;
@@ -13,6 +115,7 @@ export const CardInfo = styled(motion.div)`
   position: relative;
   display: flex;
   flex-direction: row;
+  align-items: stretch; /* Add this line */
   width: 75%;
   border-radius: 8px;
   padding: 16px;
@@ -37,23 +140,25 @@ export const cardAnimation = {
   exit: { opacity: 0, x: -100, transition: { duration: 0.5 } },
 };
 
-export const TextContainer = styled.div`
-  flex: 1;
+export const TextContainer = styled('div')`
+  flex-basis: 60%;
+  padding: 20px;
+  overflow: auto; /* Add this line */
+  transition: background-color 1s ease-in-out, color 1s ease-in-out;
+  margin-right: 20px; // Add space to the right of the text
 `;
 
-export const ImageContainer = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20vw;
-  height: 55vh;
+export const ImageContainer = styled('div')`
+  flex-basis: 40%;
+  overflow: auto; /* Add this line */
+  transition: background-color 1s ease-in-out, color 1s ease-in-out;
+  margin-left: 20px; // Add space to the left of the image
 `;
 
 export const CardImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   border-radius: 8px;
 `;
 

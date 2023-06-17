@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-// import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';

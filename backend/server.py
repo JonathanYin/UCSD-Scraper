@@ -31,10 +31,10 @@ def get_posts():
     return jsonify(posts)
 
 
-@app.route('/api/posts/cs', methods=['GET'])
-def get_cs_posts():
+@app.route('/api/posts/cs/<int:limit>', methods=['GET'])
+def get_cs_posts(limit):
     posts = []
-    cs_posts = reddit.subreddit('ucsd').search("CS OR CSE", limit=10)
+    cs_posts = reddit.subreddit('ucsd').search("CS OR CSE", limit=limit)
     for post in cs_posts:
         posts.append({
             "title": post.title,

@@ -1,27 +1,15 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
-
-const SidebarContainer = styled('div')`
-  width: 200px;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 20px;
-  box-sizing: border-box;
-  transition: background-color 1s ease-in-out, color 1s ease-in-out;
-`;
-
-const ToggleButton = styled.button`
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: ${({ theme }) => (theme === 'light' ? '#000' : '#fff')};
-`;
+import {
+  SidebarContainer,
+  SettingsTitle,
+  SliderContainer,
+  SliderLabel,
+  Slider,
+  ToggleButton,
+} from './StyledComponents';
 
 const DarkModeToggle = ({ theme, toggleTheme }) => (
   <ToggleButton onClick={toggleTheme} theme={theme}>
@@ -38,23 +26,22 @@ DarkModeToggle.propTypes = {
   toggleTheme: PropTypes.func.isRequired,
 };
 
-const Sidebar = ({ theme, toggleTheme }) => {
-  const lightThemeStyles = css`
-    background-color: #f5f4fd;
-    color: #00071d;
-  `;
-
-  const darkThemeStyles = css`
-    background-color: #00071d;
-    color: #ecf2ff;
-  `;
-
+const Sidebar = ({ theme, toggleTheme, limit, setLimit }) => {
   return (
-    <SidebarContainer
-      css={theme === 'light' ? lightThemeStyles : darkThemeStyles}
-    >
-      <h1>Settings</h1>
+    <SidebarContainer theme={theme}>
+      <SettingsTitle theme={theme}>Settings</SettingsTitle>
       <DarkModeToggle toggleTheme={toggleTheme} theme={theme} />
+      <SliderContainer>
+        <SliderLabel theme={theme}>Number of Posts: {limit}</SliderLabel>
+        <Slider
+          type="range"
+          min="5"
+          max="100"
+          value={limit}
+          onChange={(e) => setLimit(Number(e.target.value))}
+          theme={theme}
+        />
+      </SliderContainer>
     </SidebarContainer>
   );
 };
@@ -62,6 +49,8 @@ const Sidebar = ({ theme, toggleTheme }) => {
 Sidebar.propTypes = {
   theme: PropTypes.string.isRequired,
   toggleTheme: PropTypes.func.isRequired,
+  limit: PropTypes.number.isRequired,
+  setLimit: PropTypes.func.isRequired,
 };
 
 export default Sidebar;
