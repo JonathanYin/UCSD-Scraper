@@ -37,6 +37,9 @@ npm run dev
 In a new terminal window, navigate to the backend directory and run the following commands:
 
 ```bash
+# Activate virtual environment
+source venv/bin/activate
+
 # Start Flask server
 flask run
 ```
