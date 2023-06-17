@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import styled from "@emotion/styled";
-import { motion } from "framer-motion";
+import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
 export const DisplayItem = styled.div`
   display: flex;
@@ -17,8 +17,8 @@ export const CardInfo = styled(motion.div)`
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background-color: ${({ theme }) => (theme === "light" ? "#fff" : "#212A3E")};
-  border: ${({ theme }) => (theme === "light" ? "none" : "1px solid #F1F6F9")};
+  background-color: ${({ theme }) => (theme === 'light' ? '#fff' : '#212A3E')};
+  border: ${({ theme }) => (theme === 'light' ? 'none' : '1px solid #F1F6F9')};
   transition: background-color 1s ease-in-out, color 1s ease-in-out,
     border 1s ease-in-out;
 `;
@@ -30,7 +30,7 @@ export const cardAnimation = {
     x: 0,
     transition: {
       duration: 0.5,
-      when: "beforeChildren",
+      when: 'beforeChildren',
       staggerChildren: 0.3,
     },
   },
@@ -58,12 +58,12 @@ export const CardImage = styled.img`
 `;
 
 export const Subtitle = styled.h2`
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   letter-spacing: 3px;
   font-size: 10px;
   text-transform: uppercase;
   margin: 0;
-  color: ${({ theme }) => (theme === "light" ? "#7E7E7E" : "#BDCDD6")};
+  color: ${({ theme }) => (theme === 'light' ? '#7E7E7E' : '#BDCDD6')};
   font-weight: 700;
   transform: translateY(25%);
   transition: background-color 1s ease-in-out, color 1s ease-in-out,
@@ -73,29 +73,29 @@ export const Subtitle = styled.h2`
 export const Title = styled.h1`
   margin: 15px 0 0 0;
   padding-top: 10px;
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   font-size: 44px;
   line-height: 45px;
   letter-spacing: 3px;
   font-weight: 700;
-  color: ${({ theme }) => (theme === "light" ? "#2C2C2C" : "#ECF2FF")};
+  color: ${({ theme }) => (theme === 'light' ? '#2C2C2C' : '#ECF2FF')};
   transition: background-color 1s ease-in-out, color 1s ease-in-out,
     border 1s ease-in-out;
 `;
 
 export const Description = styled.p`
   margin-top: 35px;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
-  color: ${({ theme }) => (theme === "light" ? "#7e7e7e" : "#fff")};
+  color: ${({ theme }) => (theme === 'light' ? '#7e7e7e' : '#fff')};
   line-height: 22px;
   margin-bottom: 35px;
 `;
 
 export const LinkBtn = styled.a`
   width: 35%;
-  color: ${({ theme }) => (theme === "light" ? "#2C2C2C" : "#BDCDD6")};
-  font-family: "Open Sans", sans-serif;
+  color: ${({ theme }) => (theme === 'light' ? '#2C2C2C' : '#BDCDD6')};
+  font-family: 'Open Sans', sans-serif;
   letter-spacing: 3px;
   font-size: 11px;
   text-transform: uppercase;
@@ -112,8 +112,8 @@ export const ArrowBtnContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({ theme }) => (theme === "light" ? "white" : "#00071d")};
-  border: ${({ theme }) => (theme === "light" ? "none" : "1px solid #fff")};
+  background-color: ${({ theme }) => (theme === 'light' ? 'white' : '#00071d')};
+  border: ${({ theme }) => (theme === 'light' ? 'none' : '1px solid #fff')};
   border-radius: 8px;
   overflow: hidden;
   width: 80px;
@@ -143,7 +143,7 @@ export const ArrowBtn = styled.button`
 export const Divider = styled.div`
   height: 60%;
   width: 1.25px;
-  background-color: ${({ theme }) => (theme === "light" ? "#000" : "#FFF")};
+  background-color: ${({ theme }) => (theme === 'light' ? '#000' : '#FFF')};
   transition: background-color 1s ease-in-out, color 1s ease-in-out,
     border 1s ease-in-out;
 `;

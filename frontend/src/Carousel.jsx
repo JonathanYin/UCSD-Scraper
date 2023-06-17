@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 // import styled from '@emotion/styled';
-import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { AnimatePresence } from "framer-motion";
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { AnimatePresence } from 'framer-motion';
 
 import {
   DisplayItem,
@@ -19,7 +19,7 @@ import {
   ArrowBtnContainer,
   ArrowBtn,
   Divider,
-} from "./StyledComponents";
+} from './StyledComponents';
 
 const Carousel = ({ post, goPrev, goNext, theme }) => (
   <DisplayItem>
@@ -38,7 +38,7 @@ const Carousel = ({ post, goPrev, goNext, theme }) => (
           <Description theme={theme}>{post.selftext}</Description>
           <LinkBtn
             theme={theme}
-            href={`https://reddit.com${post.permalink}`}
+            href={post.permalink}
             target="_blank"
             rel="noreferrer"
           >
@@ -53,16 +53,16 @@ const Carousel = ({ post, goPrev, goNext, theme }) => (
             <FontAwesomeIcon
               icon={faArrowLeft}
               size="xs"
-              color={theme === "light" ? "#000" : "#655DBB"}
-            />{" "}
+              color={theme === 'light' ? '#000' : '#655DBB'}
+            />{' '}
           </ArrowBtn>
           <Divider theme={theme} />
           <ArrowBtn onClick={goNext}>
             <FontAwesomeIcon
               icon={faArrowRight}
               size="xs"
-              color={theme === "light" ? "#000" : "#655DBB"}
-            />{" "}
+              color={theme === 'light' ? '#000' : '#655DBB'}
+            />{' '}
           </ArrowBtn>
         </ArrowBtnContainer>
       </CardInfo>

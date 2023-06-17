@@ -8,7 +8,7 @@ import praw
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)  # <---- This is new
+CORS(app)
 
 reddit = praw.Reddit(
     client_id=os.getenv("CLIENT_ID"),
@@ -36,7 +36,11 @@ def get_cs_posts():
     posts = []
     cs_posts = reddit.subreddit('ucsd').search("CS OR CSE", limit=10)
     for post in cs_posts:
-        posts.append(post.title)
+        posts.append({
+            "title": post.title,
+            "selftext": post.selftext,
+            "permalink": f"https://www.reddit.com{post.permalink}"
+        })
     return jsonify(posts)
 
 
