@@ -59,11 +59,12 @@ const mockPosts = [
 
 function App() {
   const [theme, toggleTheme] = useTheme();
-
-  const [posts, setPosts] = useState(null);
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch posts from the backend when component mounts
+    setLoading(true);
+
     fetch('http://127.0.0.1:5000/api/posts/cs')
       .then((response) => {
         if (!response.ok) {
@@ -72,34 +73,36 @@ function App() {
         return response.json();
       })
       .then((data) => {
-        // Transform the data into the format expected by the Post component
         const formattedData = data.map((post) => ({
           title: post.title,
           selftext: post.selftext,
           permalink: post.permalink,
           image: building,
         }));
-
         setPosts(formattedData);
+        setLoading(false);
       })
       .catch((error) => {
         console.error(
           'There has been a problem with your fetch operation:',
           error,
         );
-        // Use mock posts as a fallback
-        if (!posts) {
-          setPosts(mockPosts);
-        }
+        setPosts((currentPosts) => {
+          if (currentPosts.length === 0) {
+            return mockPosts;
+          }
+          return currentPosts;
+        });
+        setLoading(false);
       });
-  }, [posts]);
+  }, []);
 
   return (
     <>
       <Global styles={globalStyles(theme)} />
       <AppContainer>
         <Sidebar theme={theme} toggleTheme={toggleTheme} />
-        {posts ? <Post posts={posts} theme={theme} /> : <p>Loading...</p>}
+        <Post posts={posts} theme={theme} loading={loading} />
       </AppContainer>
     </>
   );

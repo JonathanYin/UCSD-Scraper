@@ -34,9 +34,14 @@ const PostContainer = styled('div')`
   background-color: ${({ theme }) =>
     theme === 'light' ? '#f5f4fd' : '#00071d'};
   transition: background-color 1s ease-in-out, color 1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 `;
 
 const Post = ({ posts, theme, loading }) => {
+  console.log('loading', loading);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goPrev = () =>
